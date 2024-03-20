@@ -20,7 +20,7 @@ function Portal() {
     const requestBody = processSearchParam(param);
     const host = 'https://stg-id.singpass.gov.sg/auth';
     window.location.assign(
-      `${host}/?${requestBody}`
+      `${host}?${requestBody}`
     );
   };
 
