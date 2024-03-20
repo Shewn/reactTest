@@ -1,8 +1,7 @@
 // Portal.tsx
-
+// import PaymentForm from '../payment/payment';
 import React, { useState } from 'react';
 import './portal.css';
-import PaymentForm from '../payment/payment';
 import PaymentButton from '../payment/app'
 function Portal() {
   const [username, setUsername] = useState<string>('');
