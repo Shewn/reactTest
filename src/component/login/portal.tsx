@@ -9,14 +9,14 @@ function Portal() {
   const [password, setPassword] = useState<string>('');
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
   const handleLogin = () => {
-    const param = `{
+    const param = {
       client_id: 'GHJxWcqnnxqCHsmVFeTkY1W6I95wtYze',
       response_type: 'code',
       redirect_uri: 'https://heehehooo.netlify.app/callback',
       scope: 'openid',
       state: 'YvgdsJRdtLG3Kla_wqCu9MSKv4OAM0tK8ib2TrawMGE',
       nonce: 'abcdefg123456'
-    }`;
+    };
     const requestBody = processSearchParam(param);
     const host = 'https://stg-id.singpass.gov.sg/auth';
     window.location.assign(
@@ -24,7 +24,7 @@ function Portal() {
     );
   };
 
-  const processSearchParam = (p: string) => {
+  const processSearchParam = (p: Record<string, string>) => {
     return new URLSearchParams(p);
   }
   const handleCheckout = () => {
