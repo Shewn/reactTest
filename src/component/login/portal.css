@@ -30,6 +30,18 @@
     color: #fff;
     border: none;
     border-radius: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+
+  .payment-button {
+    width: 100%;
+    padding: 12px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
     cursor: pointer;
   }
   

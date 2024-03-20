@@ -3,11 +3,12 @@
 import React, { useState } from 'react';
 import './portal.css';
 import PaymentButton from '../payment/app'
+import { useNavigate } from "react-router-dom";
 function Portal() {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
-
+  const navigate = useNavigate();
   const handleLogin = () => {
     // Simulate authentication
     if (username === 'user' && password === 'password') {
@@ -15,6 +16,10 @@ function Portal() {
     } else {
       alert('Invalid username or password');
     }
+  };
+
+  const handleCheckout = () => {
+    window.location.href = "https://buy.stripe.com/test_aEU9Eb3IWc8capqaEE";
   };
 
   const handleLogout = () => {
@@ -49,6 +54,7 @@ function Portal() {
           />
           <br />
           <button onClick={handleLogin} className="login-button">Login</button>
+          <button onClick={handleCheckout} className="payment-button">Checkout</button>
           <PaymentButton /> {/* Include the PaymentForm component here */}
         </div>
       )}
