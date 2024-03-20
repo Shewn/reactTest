@@ -3,12 +3,10 @@
 import React, { useState } from 'react';
 import './portal.css';
 import PaymentButton from '../payment/app'
-import { useNavigate } from "react-router-dom";
 function Portal() {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
-  const navigate = useNavigate();
   const handleLogin = () => {
     // Simulate authentication
     if (username === 'user' && password === 'password') {
