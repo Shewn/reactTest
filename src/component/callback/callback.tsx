@@ -62,7 +62,7 @@ function CallbackPage() {
 
     }
     generatePubKey();
-  }, [])
+  }, [searchParams])
 
   return (
     <div>
