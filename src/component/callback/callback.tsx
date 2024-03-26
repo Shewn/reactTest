@@ -45,7 +45,7 @@ function CallbackPage() {
           code: code,
           scope: 'openid',
           client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
-          client_assertion: 'jwt'
+          client_assertion: jwt
         };
         const host = 'https://stg-id.singpass.gov.sg/token';
 
