@@ -2,7 +2,7 @@ import * as jose from 'jose'
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 function CallbackPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
 
 
   useEffect(() => {
