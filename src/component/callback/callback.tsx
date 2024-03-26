@@ -9,12 +9,27 @@ function CallbackPage() {
     async function generatePubKey() {
       const code = searchParams.get("code");
       console.log(code);
+
       const alg = 'ES256'
-      const privateJwk = { crv: 'P-256', d: 'u-tH-27uBwv0Bry-MMQZO0xNq-3mmMpEMzI9dsWrFwk', kty: 'EC', x: 'lDLBk4ohdbJZ7oMaknrKutgnlAzx3bjOa_GDIBM_miA', y: 'U7_iImOHaFig_lYwcWVBDpOszv05Bfn7YVYRBkwnS8Y', use: 'sig', kid: "sig-2021-01-15T12:09:06Z"};
-      const publicJwk = { crv: 'P-256', kty: 'EC', x: 'lDLBk4ohdbJZ7oMaknrKutgnlAzx3bjOa_GDIBM_miA', y: 'U7_iImOHaFig_lYwcWVBDpOszv05Bfn7YVYRBkwnS8Y', use: 'sig', kid: "sig-2021-01-15T12:09:06Z" };
+      const privateJwk = { 
+        crv: 'P-256', 
+        d: 'u-tH-27uBwv0Bry-MMQZO0xNq-3mmMpEMzI9dsWrFwk', 
+        kty: 'EC', 
+        x: 'lDLBk4ohdbJZ7oMaknrKutgnlAzx3bjOa_GDIBM_miA', 
+        y: 'U7_iImOHaFig_lYwcWVBDpOszv05Bfn7YVYRBkwnS8Y'
+      };
+      const publicJwk = { 
+        crv: 'P-256', 
+      kty: 'EC', 
+      x: 'lDLBk4ohdbJZ7oMaknrKutgnlAzx3bjOa_GDIBM_miA', 
+      y: 'U7_iImOHaFig_lYwcWVBDpOszv05Bfn7YVYRBkwnS8Y', 
+      use: 'sig', 
+      kid: "sig-2021-01-15T12:09:06Z" };
+      
       const dppJwksFormat = [publicJwk];
       const privateKeyToSign = await jose.importJWK(privateJwk, alg)
       const publicKeyToVerify = await jose.importJWK(publicJwk, alg)
+
       console.log(privateJwk)
 
       console.log(JSON.stringify({ keys: dppJwksFormat }))
