@@ -10,11 +10,7 @@ function CallbackPage() {
       const code = searchParams.get("code");
       console.log(code);
       const alg = 'ES256'
-      // const additionalOption = {
-      //   "use": "sig",
-      //   "kid": "sig-2021-01-15T12:09:06Z"
-      // }
-      const privateJwk = { crv: 'P-256', d: 'u-tH-27uBwv0Bry-MMQZO0xNq-3mmMpEMzI9dsWrFwk', kty: 'EC', x: 'lDLBk4ohdbJZ7oMaknrKutgnlAzx3bjOa_GDIBM_miA', y: 'U7_iImOHaFig_lYwcWVBDpOszv05Bfn7YVYRBkwnS8Y', enc: "A256CBC-HS512", use: 'sig', kid: "sig-2021-01-15T12:09:06Z" };
+      const privateJwk = { crv: 'P-256', d: 'u-tH-27uBwv0Bry-MMQZO0xNq-3mmMpEMzI9dsWrFwk', kty: 'EC', x: 'lDLBk4ohdbJZ7oMaknrKutgnlAzx3bjOa_GDIBM_miA', y: 'U7_iImOHaFig_lYwcWVBDpOszv05Bfn7YVYRBkwnS8Y', use: 'sig', kid: "sig-2021-01-15T12:09:06Z" };
       const publicJwk = { crv: 'P-256', kty: 'EC', x: 'lDLBk4ohdbJZ7oMaknrKutgnlAzx3bjOa_GDIBM_miA', y: 'U7_iImOHaFig_lYwcWVBDpOszv05Bfn7YVYRBkwnS8Y', use: 'sig', kid: "sig-2021-01-15T12:09:06Z" };
       const dppJwksFormat = [publicJwk];
       const privateKeyToSign = await jose.importJWK(privateJwk, alg)
@@ -43,7 +39,6 @@ function CallbackPage() {
           grant_type: 'authorization_code',
           redirect_uri: 'https://heehehooo.netlify.app/callback',
           code: code,
-          scope: 'openid',
           client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
           client_assertion: jwt
         };
@@ -52,7 +47,7 @@ function CallbackPage() {
         await fetch(host, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'application/x-www-form-urlencoded; charset=ISO-8859-1'
           },
           body: JSON.stringify(param)
         })
@@ -72,20 +67,3 @@ function CallbackPage() {
 }
 
 export default CallbackPage;
-
-
-// const pub = {keys: [
-//   { crv: 'P-256', 
-//   kty: 'EC', 
-//   x: 'lDLBk4ohdbJZ7oMaknrKutgnlAzx3bjOa_GDIBM_miA', 
-//   y: 'U7_iImOHaFig_lYwcWVBDpOszv05Bfn7YVYRBkwnS8Y', 
-//   use: 'sig', kid: "sig-2021-01-15T12:09:06Z",
-//   alg: 'ES256'}, 
-//   { crv: 'P-256', 
-//   kty: 'EC', 
-//   x: 'lDLBk4ohdbJZ7oMaknrKutgnlAzx3bjOa_GDIBM_miA', 
-//   y: 'U7_iImOHaFig_lYwcWVBDpOszv05Bfn7YVYRBkwnS8Y', 
-//   use: 'enc', 
-//   alg: 'ECDH-ES+A128KW',
-//   kid: "sig-2021-01-15T12:09:07Z" }]}
-//   console.log(JSON.stringify(pub));
